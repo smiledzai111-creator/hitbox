@@ -3,12 +3,14 @@ name: Build mod
 on:
   push:
     branches: [ main ]
-  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hitbox-mod
     steps:
       - uses: actions/checkout@v5
 
@@ -25,7 +27,6 @@ jobs:
         run: gradle build --no-daemon --stacktrace
 
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: hitbox-mod
-          path: build/libs/*.jar
+          path: hitbox-mod/build/libs/*.jar

@@ -16,7 +16,7 @@ public class ProjectileUtilMixin {
         at = @At(value = "INVOKE", target = "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"),
         remap = false
     )
-    private Box hitbox$expand(Box original, @Local(ordinal = 1) Entity entity2) {
+    private static Box hitbox$expand(Box original, @Local(ordinal = 1) Entity entity2) {
         double v = HitboxConfig.getEntityValue(entity2);
         return v == 0 ? original : original.expand(v);
     }
